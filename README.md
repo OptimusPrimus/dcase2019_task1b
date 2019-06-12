@@ -14,7 +14,7 @@ Step-by-step guide to train our model:
 #### Environment
 
 - Clone this project to you local machine:
-    - `git clone https://github.com/OptimusPrimus/dcase2019_task1b.git`
+    `git clone https://github.com/OptimusPrimus/dcase2019_task1b.git`
 - Download and place data set into the data folder:
     ```
     .
