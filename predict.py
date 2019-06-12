@@ -1,72 +1,64 @@
 import numpy as np
+from scipy.special import softmax
+import matplotlib.pyplot as plt
+from pathlib import Path
+from sklearn.preprocessing import LabelEncoder
 import sys
-from utils.common import load_class
-import importlib
 
-model_config = {
-    "model": {
-        "class": "models.CP_ResNet",
-        "params": {
-            "depth": 26,
-            "base_channels": 128,
-            "n_blocks_per_stage": [
-                3,
-                1,
-                1
-            ],
-            "multi_label": False,
-            "prediction_threshold": 0.4,
-            "stage1": {
-                "maxpool": [
-                    1,
-                    2
-                ],
-                "k1s": [
-                    3,
-                    3,
-                    3
-                ],
-                "k2s": [
-                    1,
-                    3,
-                    3
-                ]
-            },
-            "stage2": {
-                "maxpool": [
-                    1
-                ],
-                "k1s": [
-                    3
-                ],
-                "k2s": [
-                    3
-                ]
-            },
-            "stage3": {
-                "maxpool": [],
-                "k1s": [
-                    3
-                ],
-                "k2s": [
-                    1
-                ]
-            },
-            "block_type": "basic",
-            "use_bn": True
-        }
-    }
-}
+models_ = sys.argv[2:]
 
-logits = []
+for create_for in ['test', 'submission']:
+    nr_folds = 4
+    id = '{}_'.format(create_for) + '_' + '_and_'.join(models_)
 
-assert len(sys.argv[2:]) > 1
+    le = LabelEncoder().fit(['airport',
+                             'bus',
+                             'metro',
+                             'metro_station',
+                             'park',
+                             'public_square',
+                             'shopping_mall',
+                             'street_pedestrian',
+                             'street_traffic',
+                             'tram'])
+    files = []
+    for m in models_:
+        p = Path('.').glob('data/tmp/{}/*{}_best.npy'.format(m, create_for))
+        f = [x for x in sorted(p) if x.is_file()]
+        if len(f) != 4:
+            print(m)
+            assert False
+        files.append(f)
+    print('\n# nr models: {}'.format(len(files)))
 
-model = getattr(importlib.import_module(model_config['class']), 'get_model')(
-    input_shape=self.data_set.get_input_shape(),
-    output_shape=self.data_set.get_output_shape(),
-    **config['model'].get('params', {})
-)
+    predictions = []
 
-for m in sys.argv[2:]:
+    for i, model in enumerate(files):
+        for file in model:
+            predictions.append(softmax(np.load(file), axis=1))
 
+    filenames = np.load('data\tmp\{}_filenames.npy'.format(create_for))
+    print('\n# samples to predict: {}'.format(len(filenames)))
+
+    if create_for == 'test':
+        csv = [('Id', 'Scene_label')]
+        delimiter = ','
+        filename_ = '{}'
+
+    elif create_for == 'submission':
+        csv = []
+        delimiter = '\t'
+        filename_ = 'audio/{}.wav'
+
+    prediction = np.argmax(predictions, axis=1)
+
+    for name, label in zip(filenames, le.inverse_transform(prediction)):
+        csv.append((filename_.format(name.split('/')[-1]), label))
+
+    np.savetxt(
+        'predictions_' + id + create_for + '.csv',
+        csv,
+        delimiter=delimiter,
+        fmt="%s"
+    )
+    print('# length of csv: {}'.format(len(csv)))

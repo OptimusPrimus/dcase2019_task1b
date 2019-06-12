@@ -1,5 +1,7 @@
 data/cache/*
 data/raw/openMIC/vggish/*
+data/tmp/**
+!data/tmp/**/*.npy
 *.npy
 *.npz
 *.pickle
