@@ -58,7 +58,7 @@ As a first step we need to set up the environment:
     ```
     npm install -g omniboard
     ```
-- Install MongoDB ([more here](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/)):
+- Install & Setup MongoDB ([more here](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/))
 
 - Add file `mongodb.json` with MongoDB credentials to root: 
     ```json
