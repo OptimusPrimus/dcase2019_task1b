@@ -53,10 +53,10 @@ As a first step we need to set up the environment:
     python create_folds.py
     cd ../../..
     ```
-- Install Omniboard & MongoDB:
+- Install Omniboard:
     
     ```
-    npm install -g omniboard && conda install -c anaconda mongodb
+    npm install -g omniboard
     ```
 
 - Add file `mongodb.json` with MongoDB credentials to root: 
