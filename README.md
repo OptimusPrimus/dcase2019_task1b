@@ -84,6 +84,7 @@ The command to create predictions is:
 ```
 python predict.py model_weights_file_1 [model_weights_file_2 model_weights_file_3 ...]
 ```
+Submission files can be found in the `temp` directory pf the project
 
 ### [OPTIONAL] Train System Yourself
 
