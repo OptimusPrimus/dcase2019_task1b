@@ -43,7 +43,10 @@ As a first step we need to set up the environment:
     
     ```
 
-- Import conda environment: `conda env create -f environment.yml`
+- Import conda environment & activate it: 
+    ```
+    conda env create -f environment.yml & source activate slap
+    ```
 - Create folds:
     ```
     cd data/raw/dcase20191b
@@ -120,7 +123,7 @@ If you use the model or the model implementation please cite the following paper
 If you use other parts of the implementation please cite:
 ```
 @techreport{Primus2019DCASE,
-    Author      =   {Primus, Paul and Eitelsebner, David{,
+    Author      =   {Primus, Paul and Eitelsebner, David},
     institution =   {{DCASE2018 Challenge}},
     title       =   {Acoustic Scene Classification with mismatched recording devices},
     month       =   {June},
