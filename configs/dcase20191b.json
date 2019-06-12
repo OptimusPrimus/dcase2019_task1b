@@ -1,0 +1,140 @@
+{
+  "class_": "experiments.DCASE20191b_Experiment",
+  "seed": 3113,
+  "data_set": {
+    "class": "data_sets.SpecDCASE20191b",
+    "params": {
+      "folder_raw_audio": "./data/raw",
+      "folder_transformed_audio": "./data/cache",
+      "mono": true,
+      "sampling_rate": 22050,
+      "cache_transformations": [
+        {
+          "class": "utils.data.transformations.ToMelSpectrogram",
+          "params": {
+            "sampling_rate": 22050,
+            "nr_mels": 256,
+            "nr_fft": 2048,
+            "hop_size": 512,
+            "power": 2,
+            "fmin": 40,
+            "fmax": 11025
+          }
+        },
+        {
+          "class": "utils.data.transformations.ToDB"
+        }
+      ]
+    }
+  },
+  "model": {
+    "class": "models.CP_ResNet",
+    "params": {
+      "depth": 26,
+      "base_channels": 128,
+      "n_blocks_per_stage": [
+        3,
+        1,
+        1
+      ],
+      "multi_label": false,
+      "prediction_threshold": 0.4,
+      "stage1": {
+        "maxpool": [
+          1,
+          2
+        ],
+        "k1s": [
+          3,
+          3,
+          3
+        ],
+        "k2s": [
+          1,
+          3,
+          3
+        ]
+      },
+      "stage2": {
+        "maxpool": [
+          1
+        ],
+        "k1s": [
+          3
+        ],
+        "k2s": [
+          3
+        ]
+      },
+      "stage3": {
+        "maxpool": [],
+        "k1s": [
+          3
+        ],
+        "k2s": [
+          1
+        ]
+      },
+      "block_type": "basic",
+      "use_bn": true
+    }
+  },
+  "training": {
+    "folds": [0],
+    "nr_epochs": 250,
+    "batch_size": 32,
+    "optimizer": {
+      "class": "torch.optim.Adam",
+      "params": {
+        "lr": 1e-3,
+        "betas": [
+          0.9,
+          0.999
+        ],
+        "eps": 1e-08,
+        "weight_decay": 0,
+        "amsgrad": false
+      }
+    },
+    "domain_adaptation": {
+      "class": "domain_adaptation.MSE",
+      "lambda": 0.1,
+      "batch_size": 4
+    },
+    "loss": {
+      "class": "utils.training.losses.CrossEntropyLoss"
+    },
+    "augment": [
+      {
+        "class": "utils.data.augmentation.MixUp",
+        "params": {
+          "alpha": 0.2,
+          "rotate": true,
+          "mixup_labels": true
+        }
+      }
+    ],
+    "logger": {
+      "class": "logger.DCASE20191b_Logger"
+    },
+    "learning_rate_scheduler": {
+      "class": "torch.optim.lr_scheduler.ReduceLROnPlateau",
+      "metric": true,
+      "reset": true,
+      "params": {
+        "mode": "max",
+        "factor": 0.5,
+        "patience": 15,
+	"min_lr": 0.0
+      }
+    }
+  },
+  "resources": {
+    "nr_threads": 6,
+    "omp_num_threads": 1,
+    "gpus": [
+      0
+    ],
+    "multi_gpu_strategy": null
+  }
+}

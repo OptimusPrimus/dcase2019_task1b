@@ -1,0 +1,16 @@
+data/cache/*
+data/raw/openMIC/vggish/*
+*.npy
+*.npz
+*.pickle
+*.ogg
+*.wav
+*.mp3
+*.hdf5
+*.h5
+*.pt
+*.csv
+.idea
+mongodb.json
+telegram.json
+__pycache__
