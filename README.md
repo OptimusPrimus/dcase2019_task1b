@@ -43,17 +43,15 @@ Step-by-step guide to train our model:
     ```
 
 - Import conda environment: `conda env create -f environment.yml`
-- In data/raw/dcase20191b, run
+-  Create folds:
     ```
+    cd data/raw/dcase20191b
     python create_folds.py
     ```
-- Install omniboard:
+- Install omniboard & MongoDB (OPTIONAL):
+    
     ```
-    npm install -g omniboard
-    ```
-- Install MongoDB:
-    ```
-    conda install -c anaconda mongodb 
+    npm install -g omniboard && conda install -c anaconda mongodb
     ```
 
 - Add file `mongodb.json` with MongoDB credentials to root: 
