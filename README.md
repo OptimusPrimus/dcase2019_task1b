@@ -7,11 +7,9 @@ DCASE2019 Task 1b - Acoustic Scene Classification with mismatched recording devi
 For a detailed description of the task, data set, and baseline model, see:
 http://dcase.community/challenge2019/task-acoustic-scene-classification
 
-## Prepare
+## Prepare Environment
 
 Step-by-step guide to train our model:
-
-#### Environment
 
 - Clone this project to you local machine:
     ```
@@ -44,7 +42,7 @@ Step-by-step guide to train our model:
     
     ```
 
-- Import conda environment: `conda env create -f environment.yaml`
+- Import conda environment: `conda env create -f environment.yml`
 - In data/raw/dcase20191b, run
     ```
     python create_folds.py
@@ -53,8 +51,10 @@ Step-by-step guide to train our model:
     ```
     npm install -g omniboard
     ```
-
-#### Sacred
+- Install MongoDB:
+    ```
+    conda install -c anaconda mongodb 
+    ```
 
 - Add file `mongodb.json` with MongoDB credentials to root: 
     ```json
@@ -93,7 +93,7 @@ Step-by-step guide to train our model:
 
 ## Restults
 
-- To see training progres, start Omniboard: 
+- To see training progres, start Omniboard:
 ```
 omniboard -m localhost:27017:MIC
 ``` 
@@ -104,6 +104,7 @@ omniboard -m localhost:27017:MIC
 TODO
 
 ### Citation
+
 If you use the model or the model implementation please cite the following paper:
 ```
 @inproceedings{Koutini2019Receptive,
