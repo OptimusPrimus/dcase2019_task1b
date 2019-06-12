@@ -1,3 +1,2 @@
 from experiments.base import Experiment
-from experiments.openmic import OpenMIC_Experiment
 from experiments.dcase20191b import DCASE20191b_Experiment

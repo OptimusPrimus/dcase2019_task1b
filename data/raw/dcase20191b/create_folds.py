@@ -1,12 +1,16 @@
 import pandas as pd
 import random
 import numpy as np
+from pathlib import Path
 
 n_folds = 4
 use_full_dev_a = True
 eval_setup_path = "./evaluation_setup/"
 train_setup_path = "./training_setup/"
 fold_file_name = "fold{}.csv"
+
+p = Path(train_setup_path)
+p.mkdir(parents=True, exist_ok=True)
 
 # some seeds that provide more or less usefull distribution of labels and cities (30160, 4257, 50833, 37491, 26942):
 random.seed(30160)

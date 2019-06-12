@@ -1,1 +1,1 @@
-from logger.logger import DCASE20191b_Logger, MIC_Logger
+from logger.logger import DCASE20191b_Logger
