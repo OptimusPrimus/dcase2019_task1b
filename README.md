@@ -25,14 +25,14 @@ As a first step we need to set up the environment:
     .       └───dcase20191b
     .           |   create_folds.py
     .           |   meta.csv 
-    .           └───training                            # development data
-    .           .   |   tram-vienna-285-8639-a.wav
+    .           └───submission                           # submission data
+    .           .   |   1.wav
     .           .   |   ...
     .           └───test                                # leaderboard data
     .           .   |   1.wav
     .           .   |   ...
-    .           └───audio                               # submission data
-    .           .   |   1.wav
+    .           └───audio                               # training
+    .           .   |   tram-vienna-285-8639-a.wav
     .           .   |   ...
     .           └───evaluation_setup                    # evaluation split
     .           .   |   fold1_evaluate.csv 
