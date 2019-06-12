@@ -22,8 +22,8 @@ A step-by-step guide to train our model.
     └───data
     .   └───raw
     .       └───dcase20191b
-                |   create_folds.py
-                |   meta.csv 
+    .           |   create_folds.py
+    .           |   meta.csv 
     .           └───training
     .           .   |   tram-vienna-285-8639-a.wav
     .           .   |   ...
