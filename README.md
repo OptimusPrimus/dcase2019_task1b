@@ -9,7 +9,7 @@ For a detailed description of task, data set, and baseline, see:
 http://dcase.community/challenge2019/task-acoustic-scene-classification
 
 
-## Step-by-step guide to train the proposed system
+## Step-by-step Guide for Prediction & Training
 
 As a first step we need to set up the environment:
 - Clone this project to you local machine:
@@ -99,20 +99,13 @@ The command to create predictions is:
     ``
    
 See [Sacred CLI Description](https://sacred.readthedocs.io/en/latest/command_line.html) on how to maipulate training parameters.
-
-## Restults
-
-- To see training progres, start Omniboard:
+Logit outputs can be found in folder `data/tmp`
+To see training progres, start Omniboard:
 ```
 omniboard -m localhost:27017:MIC
 ``` 
-- Logit outputs can be found in folder `data/tmp`
 
-## Predict
-
-TODO
-
-### Citation
+## Citation
 
 If you use the model or the model implementation please cite the following paper:
 ```
