@@ -24,20 +24,20 @@ A step-by-step guide to train our model.
     .       └───dcase20191b
     .           |   create_folds.py
     .           |   meta.csv 
-    .           └───training
+    .           └───training                            # development data
     .           .   |   tram-vienna-285-8639-a.wav
     .           .   |   ...
-    .           └───test # leaderboard data
+    .           └───test                                # leaderboard data
     .           .   |   1.wav
     .           .   |   ...
-    .           └───audio # submission data
+    .           └───audio                               # submission data
     .           .   |   1.wav
     .           .   |   ...
-    .           └───evaluation_setup 
+    .           └───evaluation_setup                    # evaluation split
     .           .   |   fold1_evaluate.csv 
     .           .   |   fold1_test.csv
     .           .   |   fold1_train.csv
-    .           └───evaluation_setup # empty
+    .           └───training_setup                      # empty, 4-flod CV split
     |   ...
     
     ```
@@ -69,7 +69,7 @@ A step-by-step guide to train our model.
 
 
 
-## Run an Experiment
+## Run Experiment
 - activate conda environment `source activate slap`
 - edit `configs/dcase20191b.json`
 - train with `OMP_NUM_THREADS=1 CUDA_VISIBLE_DEVICES=0 python main.py`
