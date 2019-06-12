@@ -45,12 +45,13 @@ As a first step we need to set up the environment:
 
 - Import conda environment & activate it: 
     ```
-    conda env create -f environment.yml && source activate slap
+    conda env create -f environment.yaml && source activate slap
     ```
 - Create folds:
     ```
     cd data/raw/dcase20191b
     python create_folds.py
+    cd ../../..
     ```
 - Install Omniboard & MongoDB:
     
