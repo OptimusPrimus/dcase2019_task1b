@@ -1,7 +1,10 @@
 data/cache/*
 data/raw/openMIC/vggish/*
-data/tmp/**
-!data/tmp/**/*.npy
+data/tmp/*
+!data/tmp/mi_da
+!data/tmp/mse_da_0
+!data/tmp/mse_da_1
+!data/tmp/no_da
 *.npy
 *.npz
 *.pickle
