@@ -45,7 +45,7 @@ As a first step we need to set up the environment:
 
 - Import conda environment & activate it: 
     ```
-    conda env create -f environment.yml & source activate slap
+    conda env create -f environment.yml && source activate slap
     ```
 - Create folds:
     ```
@@ -130,4 +130,7 @@ If you use other parts of the implementation please cite:
     year        =   2019
 }
 ```
+
+## References
+
 
