@@ -9,12 +9,13 @@ http://dcase.community/challenge2019/task-acoustic-scene-classification
 
 ## Prepare
 
-A step-by-step guide to train our model.
+Step-by-step guide to train our model:
 
 #### Environment
 
-- Clone this project: `git clone https://github.com/OptimusPrimus/dcase2019_task1b.git`
-- download and place data set into the data folder:
+- Clone this project to you local machine:
+    - `git clone https://github.com/OptimusPrimus/dcase2019_task1b.git`
+- Download and place data set into the data folder:
     ```
     .
     │
@@ -41,13 +42,13 @@ A step-by-step guide to train our model.
     
     ```
 
-- import conda environment: `conda env create -f environment.yaml`
-- run `python create_folds.py` in data/raw/dcase20191b
-- install omniboard `npm install -g omniboard`
+- Import conda environment: `conda env create -f environment.yaml`
+- Run `python create_folds.py` in data/raw/dcase20191b
+- Install omniboard `npm install -g omniboard`
 
 #### Sacred
 
-- add file `mongodb.json` with MongoDB credentials to root: 
+- Add file `mongodb.json` with MongoDB credentials to root: 
     ```json
     {
       "user": "username",
@@ -66,9 +67,9 @@ A step-by-step guide to train our model.
     ```
 
 ## Run Experiment
-- activate conda environment `source activate slap`
-- edit `configs/dcase20191b.json`
-- train with `OMP_NUM_THREADS=1 CUDA_VISIBLE_DEVICES=0 python main.py`
+- Activate conda environment `source activate slap`
+- Edit `configs/dcase20191b.json`
+- Train with `OMP_NUM_THREADS=1 CUDA_VISIBLE_DEVICES=0 python main.py`
 
 ## Restults
 
