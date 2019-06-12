@@ -147,6 +147,6 @@ If you use other parts of the implementation please cite:
 [2] Khaled Koutini, Hamid Eghbal-zadeh, Matthias Dorfer, and Gerhard Widmer. The Receptive Field as a Regularizer in Deep Convolutional Neural Networks for Acoustic Scene Classification. In Proceedings of the European Signal Processing Conference (EUSIPCO), June 2019.
 
 ## Links
-[Sacred Documentation](https://sacred.readthedocs.io/en/latest/quickstart.html)
-[Sacred GitHub](https://github.com/IDSIA/sacred)
-[Omniboard](https://github.com/vivekratnavel/omniboard)
+- [Sacred Documentation](https://sacred.readthedocs.io/en/latest/quickstart.html)
+- [Sacred GitHub](https://github.com/IDSIA/sacred)
+- [Omniboard](https://github.com/vivekratnavel/omniboard)
