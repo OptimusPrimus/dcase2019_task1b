@@ -48,7 +48,7 @@ Step-by-step guide to train our model:
     cd data/raw/dcase20191b
     python create_folds.py
     ```
-- Install omniboard & MongoDB (OPTIONAL):
+- Install omniboard & MongoDB (optinal):
     
     ```
     npm install -g omniboard && conda install -c anaconda mongodb
