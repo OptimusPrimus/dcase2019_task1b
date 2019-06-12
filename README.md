@@ -102,3 +102,26 @@ omniboard -m localhost:27017:MIC
 ## Predict
 
 TODO
+
+### Citation
+If you use the model or the model implementation please cite the following paper:
+```
+@inproceedings{Koutini2019Receptive,
+    author      =   {Koutini, Khaled and Eghbal-zadeh, Hamid and Dorfer, Matthias and Widmer, Gerhard},
+    title       =   {{The Receptive Field as a Regularizer in Deep Convolutional Neural Networks for Acoustic Scene Classification}},
+    booktitle   =   {Proceedings of the European Signal Processing Conference (EUSIPCO)},
+    address     =   {A Coru~{n}a, Spain},
+    year        =   2019
+}
+```
+If you use other parts of the implementation please cite:
+```
+@techreport{Primus2019DCASE,
+    Author      =   {Primus, Paul and Eitelsebner, David{,
+    institution =   {{DCASE2018 Challenge}},
+    title       =   {Acoustic Scene Classification with mismatched recording devices},
+    month       =   {June},
+    year        =   2019
+}
+```
+
