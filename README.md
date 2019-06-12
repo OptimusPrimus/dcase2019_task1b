@@ -9,8 +9,9 @@ For a detailed description of task, data set, and baseline, see:
 http://dcase.community/challenge2019/task-acoustic-scene-classification
 
 
-## Step-by-step guide to train the proposed system:
+## Step-by-step guide to train the proposed system
 
+As a first step we need to set up the environment:
 - Clone this project to you local machine:
     ```
     git clone https://github.com/OptimusPrimus/dcase2019_task1b.git
@@ -75,7 +76,9 @@ http://dcase.community/challenge2019/task-acoustic-scene-classification
 
 ### Predict
 
-
+We then can use the provided model weights to creat predictions leaderboard and evaluation set.
+The command to create predictions is:
+    ```python predict.py model_weights_file_1 [model_weights_file_2 model_weights_file_3 ...]```
 
 ### Train System Yourself [OPTIONAL]
 
