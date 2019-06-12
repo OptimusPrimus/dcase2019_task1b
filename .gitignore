@@ -16,6 +16,6 @@ mongodb.json
 telegram.json
 !data/tmp/mi_da
 !data/tmp/mse_da_0
-!data/tmp/mse_da_1
-!data/tmp/no_da
+!data/tmp/mse_da_1/
+!data/tmp/no_da/
 __pycache__
