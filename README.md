@@ -79,7 +79,7 @@ As a first step we need to set up the environment:
 
 ### Predict
 
-We then can use the provided model weights to creat predictions leaderboard and evaluation set.
+We then can use the provided model weights to create predictions for leaderboard and evaluation set.
 The command to create predictions is:
 ```
 python predict.py model_weights_file_1 [model_weights_file_2 model_weights_file_3 ...]
