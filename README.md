@@ -59,7 +59,7 @@ As a first step we need to set up the environment:
     npm install -g omniboard
     ```
 - Install & Setup MongoDB ([more here](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/))
-
+- Create Database (e.g. use dcase20191b)
 - Add file `mongodb.json` with MongoDB credentials to root: 
     ```json
     {
@@ -114,7 +114,7 @@ See [Sacred CLI Description](https://sacred.readthedocs.io/en/latest/command_lin
 Trained models can be found in folder `data/tmp`.
 To see training progress, start Omniboard:
 ```
-omniboard -m localhost:27017:dcase20191b
+omniboard -m 127.0.0.1:27017:dcase20191b
 ``` 
 
 ## Citation
