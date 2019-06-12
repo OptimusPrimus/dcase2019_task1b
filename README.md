@@ -5,16 +5,15 @@ DCASE2019 Task 1b - Acoustic Scene Classification with mismatched recording devi
 ## Task Description
 
 For a detailed description of the task, data set, and baseline model, see:
-TODO
+http://dcase.community/challenge2019/task-acoustic-scene-classification
 
-## Setup
+## Prepare
 
 A step-by-step guide to train our model.
 
 #### Environment
 
-- Clone this project 
-    `git clone https://github.com/OptimusPrimus/dcase2019_task1b.git`
+- Clone this project: `git clone https://github.com/OptimusPrimus/dcase2019_task1b.git`
 - download and place data set into the data folder:
     ```
     .
@@ -66,13 +65,16 @@ A step-by-step guide to train our model.
     }
     ```
 
-
-
-
 ## Run Experiment
 - activate conda environment `source activate slap`
 - edit `configs/dcase20191b.json`
 - train with `OMP_NUM_THREADS=1 CUDA_VISIBLE_DEVICES=0 python main.py`
 
+## Restults
 
+- Start Omniboard with `omniboard -m localhost:27017:MIC` to see training progress.
+- Logit outputs can be found in folder `data/tmp`
 
+## Predict
+
+TODO
