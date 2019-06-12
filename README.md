@@ -81,15 +81,17 @@ As a first step we need to set up the environment:
 
 We then can use the provided model weights to creat predictions leaderboard and evaluation set.
 The command to create predictions is:
-    ```python predict.py model_weights_file_1 [model_weights_file_2 model_weights_file_3 ...]```
+```
+python predict.py model_weights_file_1 [model_weights_file_2 model_weights_file_3 ...]
+```
 
-### Train System Yourself [OPTIONAL]
+### [OPTIONAL] Train System Yourself
 
 - Activate conda environment:
     ```
     source activate slap
     ```
-- [OPTIONAL] Edit `configs/dcase20191b.json`
+- Edit `configs/dcase20191b.json`
 - Train MSE, MI, and NoDA models with:
     ```
     OMP_NUM_THREADS=1 CUDA_VISIBLE_DEVICES=0 python main.py
