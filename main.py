@@ -28,7 +28,7 @@ for filename in c.ROOT.glob('**/*.py'):
 
 @ex.config
 def default_config():
-    project = 'openmic'
+    project = 'dcase20191b'
 
 @ex.config
 def custom_config(project):

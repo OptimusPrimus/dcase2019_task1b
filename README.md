@@ -12,9 +12,10 @@ TODO
 A step-by-step guide to train our model.
 
 #### Environment
-- download data set: https: TODO
-- 'git clone https://github.com/OptimusPrimus/dcase2019_task1b.git' 
-- place data into the data folder:
+
+- Clone this project 
+    `git clone https://github.com/OptimusPrimus/dcase2019_task1b.git`
+- download and place data set into the data folder:
     ```
     .
     │
@@ -42,15 +43,8 @@ A step-by-step guide to train our model.
     ```
 
 - import conda environment: `conda env create -f environment.yaml`
+- run `python create_folds.py` in data/raw/dcase20191b
 - install omniboard `npm install -g omniboard`
-
-- [OPTIONAL] Add file `telegram.json` with Telegram Bot credentials to root: 
-    ```json
-    {
-      "token": "SecretToken",
-      "chat_id": "ChatID"
-    }
-    ```
 
 #### Sacred
 
@@ -64,21 +58,21 @@ A step-by-step guide to train our model.
       "port": 27017
     }
     ```
+- [OPTIONAL] Add file `telegram.json` with Telegram Bot credentials to root: 
+    ```json
+    {
+      "token": "SecretToken",
+      "chat_id": "ChatID"
+    }
+    ```
 
-- run `python create_folds.py` in data/raw/dcase20191b
+
 
 
 ## Run an Experiment
 - activate conda environment `source activate slap`
 - edit `configs/dcase20191b.json`
-- start training with `OMP_NUM_THREADS=1 CUDA_VISIBLE_DEVICES=0 python main.py with project=dcase20191b`
+- train with `OMP_NUM_THREADS=1 CUDA_VISIBLE_DEVICES=0 python main.py`
 
-## Results Overview
 
-Model performance measured in Accuray on devices B and C
-
-| Method        |Sampling   | Augmentation   | AUROC         | Pre  | Rec  | F1  | ACC  |
-|:-----------------:|:---------:|:--------------:|:-------------:|:---: |:---: |:---:|:---:|
-
-*) CNN trained on Audio Set for feature extraction, classification with random forest.
 
