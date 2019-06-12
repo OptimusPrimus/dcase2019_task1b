@@ -1,5 +1,5 @@
 data/cache/*
-data/raw/openMIC/vggish/*
+data/raw/*
 *.npz
 *.pickle
 *.ogg
