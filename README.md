@@ -87,6 +87,10 @@ python predict.py model_weights_file_1 [model_weights_file_2 model_weights_file_
 Submission files can be found in the `temp` directory pf the project
 
 ### [OPTIONAL] Train System Yourself
+- Start MongoDB:
+    ```
+    mongod
+    ```
 
 - Activate conda environment:
     ```
