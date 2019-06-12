@@ -64,7 +64,7 @@ As a first step we need to set up the environment:
       "user": "username",
       "pwd": "password123",
       "ip": "127.0.0.1",
-      "db": "MIC",
+      "db": "dcase20191b",
       "port": 27017
     }
     ```
@@ -105,10 +105,10 @@ Submission files can be found in the `temp` directory pf the project
     ``
    
 See [Sacred CLI Description](https://sacred.readthedocs.io/en/latest/command_line.html) on how to maipulate training parameters.
-Logit outputs can be found in folder `data/tmp`
-To see training progres, start Omniboard:
+Trained models can be found in folder `data/tmp`.
+To see training progress, start Omniboard:
 ```
-omniboard -m localhost:27017:MIC
+omniboard -m localhost:27017:dcase20191b
 ``` 
 
 ## Citation
