@@ -14,7 +14,7 @@ Step-by-step guide to train our model:
 #### Environment
 
 - Clone this project to you local machine:
-    `git clone https://github.com/OptimusPrimus/dcase2019_task1b.git`
+    ```git clone https://github.com/OptimusPrimus/dcase2019_task1b.git```
 - Download and place data set into the data folder:
     ```
     .
@@ -43,8 +43,10 @@ Step-by-step guide to train our model:
     ```
 
 - Import conda environment: `conda env create -f environment.yaml`
-- Run `python create_folds.py` in data/raw/dcase20191b
-- Install omniboard `npm install -g omniboard`
+- In data/raw/dcase20191b, run
+    ```python create_folds.py```
+- Install omniboard:
+    ```npm install -g omniboard```
 
 #### Sacred
 
@@ -67,13 +69,18 @@ Step-by-step guide to train our model:
     ```
 
 ## Run Experiment
-- Activate conda environment `source activate slap`
+- Activate conda environment:
+```source activate slap```
 - Edit `configs/dcase20191b.json`
-- Train with `OMP_NUM_THREADS=1 CUDA_VISIBLE_DEVICES=0 python main.py`
+- Train MSE, MI, and NoDA models with:
+    ```OMP_NUM_THREADS=1 CUDA_VISIBLE_DEVICES=0 python main.py``
+    ```OMP_NUM_THREADS=1 CUDA_VISIBLE_DEVICES=0 python main.py with training.domain_daptation.class=domain_adaptation.MSE``
+    ```OMP_NUM_THREADS=1 CUDA_VISIBLE_DEVICES=0 python main.py with training.domain_daptation.class=domain_adaptation.MutualInformationDA``
 
 ## Restults
 
-- Start Omniboard with `omniboard -m localhost:27017:MIC` to see training progress.
+- To see training progres, start Omniboard: 
+```omniboard -m localhost:27017:MIC``` 
 - Logit outputs can be found in folder `data/tmp`
 
 ## Predict
