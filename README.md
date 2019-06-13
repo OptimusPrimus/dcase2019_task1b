@@ -81,7 +81,7 @@ As a first step we need to set up the environment:
 
 ### Predict
 
-We then can use the provided training files create predictions for leaderboard and evaluation set.
+Use the provided training files to create predictions for leaderboard and evaluation set.
 The command to create predictions is:
 ```
 python predict.py model_id_0 [model_id_1 model_id_2 ...]
