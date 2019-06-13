@@ -5,11 +5,13 @@ from pathlib import Path
 from sklearn.preprocessing import LabelEncoder
 import sys
 
-models_ = sys.argv[2:]
+models_ = sys.argv[1:]
+
+assert len(models_) > 0
 
 for create_for in ['test', 'submission']:
     nr_folds = 4
-    id = '{}_'.format(create_for) + '_' + '_and_'.join(models_)
+    id = 'models_[' + '_and_'.join(models_) +']'
 
     le = LabelEncoder().fit(['airport',
                              'bus',
@@ -23,13 +25,13 @@ for create_for in ['test', 'submission']:
                              'tram'])
     files = []
     for m in models_:
-        p = Path('.').glob('data/tmp/{}/*{}_best.npy'.format(m, create_for))
+        p = Path('.').glob('./data/tmp/{}/*{}_best.npy'.format(m, create_for))
         f = [x for x in sorted(p) if x.is_file()]
         if len(f) != 4:
             print(m)
             assert False
         files.append(f)
-    print('\n# nr models: {}'.format(len(files)))
+    print('# nr models: {}'.format(len(files)))
 
     predictions = []
 
@@ -37,8 +39,10 @@ for create_for in ['test', 'submission']:
         for file in model:
             predictions.append(softmax(np.load(file), axis=1))
 
-    filenames = np.load('data\tmp\{}_filenames.npy'.format(create_for))
-    print('\n# samples to predict: {}'.format(len(filenames)))
+    prediction = np.mean(predictions, axis=0)
+
+    filenames = np.load(Path('./data/tmp/{}_filenames.npy'.format(create_for)))
+    print('# samples to predict: {}'.format(len(filenames)))
 
     if create_for == 'test':
         csv = [('Id', 'Scene_label')]
@@ -50,13 +54,12 @@ for create_for in ['test', 'submission']:
         delimiter = '\t'
         filename_ = 'audio/{}.wav'
 
-    prediction = np.argmax(predictions, axis=1)
-
+    prediction = np.argmax(prediction, axis=1)
     for name, label in zip(filenames, le.inverse_transform(prediction)):
         csv.append((filename_.format(name.split('/')[-1]), label))
 
     np.savetxt(
-        'predictions_' + id + create_for + '.csv',
+        './data/tmp/predictions_' + id + '_'+  create_for + '.csv',
         csv,
         delimiter=delimiter,
         fmt="%s"
