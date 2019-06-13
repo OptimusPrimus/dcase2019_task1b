@@ -92,7 +92,7 @@ python predict.py no_da && python predict.py mse_da_0 && python predict.py mi_da
 ```
 The submission files can be found in directory `data\tmp`.
 
-### Train The System Yourself
+### Train the System Yourself
 - Start MongoDB:
     ```
     mongod
