@@ -1,6 +1,5 @@
 import numpy as np
 from scipy.special import softmax
-import matplotlib.pyplot as plt
 from pathlib import Path
 from sklearn.preprocessing import LabelEncoder
 import sys
