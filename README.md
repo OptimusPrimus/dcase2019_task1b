@@ -108,10 +108,10 @@ The submission files can be found in directory `data\tmp`.
     OMP_NUM_THREADS=1 CUDA_VISIBLE_DEVICES=0 python main.py
     ```
     ```
-    OMP_NUM_THREADS=1 CUDA_VISIBLE_DEVICES=0 python main.py with training.domain_daptation.class=domain_adaptation.MSE
+    OMP_NUM_THREADS=1 CUDA_VISIBLE_DEVICES=0 python main.py with training.domain_adaptation.class=domain_adaptation.MSE
     ```
     ```
-    OMP_NUM_THREADS=1 CUDA_VISIBLE_DEVICES=0 python main.py with training.domain_daptation.class=domain_adaptation.MutualInformationDA
+    OMP_NUM_THREADS=1 CUDA_VISIBLE_DEVICES=0 python main.py with training.domain_adaptation.class=domain_adaptation.MutualInformationDA
     ```
    
 See [Sacred CLI Description](https://sacred.readthedocs.io/en/latest/command_line.html) on how to manipulate training parameters.
