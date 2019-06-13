@@ -59,7 +59,7 @@ for create_for in ['test', 'submission']:
         csv.append((filename_.format(name.split('/')[-1]), label))
 
     np.savetxt(
-        './data/tmp/predictions_' + id + '_'+  create_for + '.csv',
+        Path('./data/tmp/predictions_' + id + '_'+  create_for + '.csv'),
         csv,
         delimiter=delimiter,
         fmt="%s"
