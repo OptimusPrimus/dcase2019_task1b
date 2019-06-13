@@ -86,7 +86,7 @@ The command to create predictions is:
 ```
 python predict.py model_weights_file_1 [model_weights_file_2 model_weights_file_3 ...]
 ```
-Submission files can be found in the `temp` directory pf the project
+Submission files can be found in the `tmp` directory pf the project
 
 ### [OPTIONAL] Train System Yourself
 - Start MongoDB:
@@ -110,7 +110,7 @@ Submission files can be found in the `temp` directory pf the project
     OMP_NUM_THREADS=1 CUDA_VISIBLE_DEVICES=0 python main.py with training.domain_daptation.class=domain_adaptation.MutualInformationDA
     ``
    
-See [Sacred CLI Description](https://sacred.readthedocs.io/en/latest/command_line.html) on how to maipulate training parameters.
+See [Sacred CLI Description](https://sacred.readthedocs.io/en/latest/command_line.html) on how to manipulate training parameters.
 Trained models can be found in folder `data/tmp`.
 To see training progress, start Omniboard:
 ```
