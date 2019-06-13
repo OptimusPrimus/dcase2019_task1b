@@ -3,7 +3,7 @@ DCASE2019 Task 1b - Acoustic Scene Classification with mismatched recording devi
 
 
 ## Description
-This repository contains CP-JKU Student team's submission for [DCASE Challenge 2019](http://dcase.community/challenge2019/). A technical report describing this system will be available on the DCASE homepage as soon as official evaluation results are available. We need to stress that results might differ slightly from the ones described in the report, since we do not seed the random number generator manually. We therefore additionally provide all the files necessary to recreate our submission files in  tmp/data/{no_da, mse_da_0, mse_da_1, mi_da}` folders.
+This repository contains CP-JKU Student team's submission for [DCASE Challenge 2019](http://dcase.community/challenge2019/). A technical report describing this system will be available on the DCASE homepage as soon as official evaluation results are available. We need to stress that results might differ slightly from the ones described in the report, since we do not seed the random number generator manually. We therefore additionally provide all the files necessary to recreate our submission files in  `tmp/data/{no_da, mse_da_0, mse_da_1, mi_da}` folders.
 
 For a detailed description of task, data set, and baseline, see:
 http://dcase.community/challenge2019/task-acoustic-scene-classification
