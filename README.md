@@ -86,30 +86,11 @@ The command to create predictions is:
 ```
 python predict.py model_id_0 [model_id_1 model_id_2 ...]
 ```
-e.g.
-Submission 1:
+e.g. to create all submission files run:
 ```
-python predict.py no_da
+python predict.py no_da && python predict.py mse_da_0 && python predict.py mi_da && python predict.py mse_da_0 mse_da_1
 ```
-
-Submission 2:
-```
-python predict.py mse_da_0
-```
-
-Submission 3:
-```
-python predict.py mi_da
-```
-
-Submission 3:
-```
-python predict.py mse_da_0 mse_da_1
-```
-
-NUM_THREADS=1 CUDA_VISIBLE_DEVICES=0 python main.py with training.domain_daptation.class=domain_adaptation.MutualInformationDA
-    ``
-After running the script, submission files can be found in the `data\tmp` directory of the project
+The submission files can be found in the directory `data\tmp`.
 
 ### [OPTIONAL] Train System Yourself
 - Start MongoDB:
