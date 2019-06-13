@@ -3,7 +3,7 @@ DCASE2019 Task 1b - Acoustic Scene Classification with mismatched recording devi
 
 
 ## Description
-This repository contains CP-JKU Student team's submission for [DCASE Challenge 2019](http://dcase.community/challenge2019/). A technical report describing this system will be available on the DCASE homepage as soon as official evaluation results are available. We need to stress that results might differ slightly from the ones described in the report, since we do not seed the random number generator manually. We therefore additionally provide all the files necessary to recreate our submission files in  `tmp/data/{no_da, mse_da_0, mse_da_1, mi_da}` folders.
+This repository contains CP-JKU Student team's submission for [DCASE Challenge 2019](http://dcase.community/challenge2019/). A technical report describing this system will be available on the DCASE homepage as soon as official evaluation results are available. We need to stress that self trained results might differ slightly from the ones described in the report, since we do not seed the random number generator manually. We therefore additionally provide all the files necessary to recreate our submission files in  `tmp/data/{no_da, mse_da_0, mse_da_1, mi_da}` folders.
 
 For a detailed description of task, data set, and baseline, see:
 http://dcase.community/challenge2019/task-acoustic-scene-classification
@@ -81,12 +81,35 @@ As a first step we need to set up the environment:
 
 ### Predict
 
-We then can use the provided model weights to create predictions for leaderboard and evaluation set.
+We then can use the provided training files create predictions for leaderboard and evaluation set.
 The command to create predictions is:
 ```
-python predict.py model_weights_file_1 [model_weights_file_2 model_weights_file_3 ...]
+python predict.py model_id_0 [model_id_1 model_id_2 ...]
 ```
-Submission files can be found in the `tmp` directory pf the project
+e.g.
+Submission 1:
+```
+python predict.py no_da
+```
+
+Submission 2:
+```
+python predict.py mse_da_0
+```
+
+Submission 3:
+```
+python predict.py mi_da
+```
+
+Submission 3:
+```
+python predict.py mse_da_0 mse_da_1
+```
+
+NUM_THREADS=1 CUDA_VISIBLE_DEVICES=0 python main.py with training.domain_daptation.class=domain_adaptation.MutualInformationDA
+    ``
+After running the script, submission files can be found in the `data\tmp` directory of the project
 
 ### [OPTIONAL] Train System Yourself
 - Start MongoDB:
