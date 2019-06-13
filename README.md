@@ -9,7 +9,7 @@ For a detailed description of task, data set, and baseline, see:
 http://dcase.community/challenge2019/task-acoustic-scene-classification
 
 
-## Step-by-step Guide for Prediction & Training
+## Step-by-Step Guide for Prediction & Training
 
 As a first step we need to set up the environment:
 - Clone this project to you local machine:
@@ -129,7 +129,7 @@ If you use the model or the model implementation please cite the following paper
     author      =   {Koutini, Khaled and Eghbal-zadeh, Hamid and Dorfer, Matthias and Widmer, Gerhard},
     title       =   {{The Receptive Field as a Regularizer in Deep Convolutional Neural Networks for Acoustic Scene Classification}},
     booktitle   =   {Proceedings of the European Signal Processing Conference (EUSIPCO)},
-    address     =   {A Coru~{n}a, Spain},
+    address     =   {A Coru\~{n}a, Spain},
     year        =   2019
 }
 ```
