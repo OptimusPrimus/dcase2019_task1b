@@ -86,11 +86,11 @@ The command to create predictions is:
 ```
 python predict.py model_id_0 [model_id_1 model_id_2 ...]
 ```
-e.g. to create all submission files run:
+To create all submission files simply run:
 ```
 python predict.py no_da && python predict.py mse_da_0 && python predict.py mi_da && python predict.py mse_da_0 mse_da_1
 ```
-The submission files can be found in the directory `data\tmp`.
+The submission files can be found in directory `data\tmp`.
 
 ### [OPTIONAL] Train System Yourself
 - Start MongoDB:
@@ -112,7 +112,7 @@ The submission files can be found in the directory `data\tmp`.
     ```
     ```
     OMP_NUM_THREADS=1 CUDA_VISIBLE_DEVICES=0 python main.py with training.domain_daptation.class=domain_adaptation.MutualInformationDA
-    ``
+    ```
    
 See [Sacred CLI Description](https://sacred.readthedocs.io/en/latest/command_line.html) on how to manipulate training parameters.
 Trained models can be found in folder `data/tmp`.
