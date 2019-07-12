@@ -9,7 +9,7 @@ from sklearn.preprocessing import LabelEncoder
 import torchvision
 
 
-def split(files, labels):
+def split(files, labels, remove_end=False):
     label_dict = {}
 
     for i, file in enumerate(files):
@@ -30,8 +30,24 @@ def split(files, labels):
     single_files = list(single_label_dict.keys())
     single_labels = [single_label_dict[f] for f in single_files]
 
+    if not remove_end:
+        single_files = [ f + '-a' for f in single_files]
+
     parallel_files = list(parallel_label_dict.keys())
     parallel_labels = [parallel_label_dict[f] for f in parallel_files]
+
+    if not remove_end:
+        parallel_files_ = []
+        parallel_labels_ = []
+
+        for f,l in zip(parallel_files, parallel_labels):
+            parallel_files_.append(f + '-a')
+            parallel_files_.append(f + '-b')
+            parallel_files_.append(f + '-c')
+            parallel_labels_ += [l, l, l]
+
+        parallel_files = parallel_files_
+        parallel_labels = parallel_labels_
 
     return single_files, single_labels, parallel_files, parallel_labels
 
