@@ -81,7 +81,7 @@
   },
   "training": {
     "folds": [0],
-    "nr_epochs": 250,
+    "nr_epochs": 120,
     "batch_size": 32,
     "optimizer": {
       "class": "torch.optim.Adam",
@@ -124,7 +124,7 @@
       "params": {
         "mode": "max",
         "factor": 0.5,
-        "patience": 15,
+        "patience": 10,
 	"min_lr": 0.0
       }
     }
