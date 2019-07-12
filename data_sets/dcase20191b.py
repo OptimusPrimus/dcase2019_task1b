@@ -36,6 +36,8 @@ class SpecDCASE20191b(Dataset):
         self.fold = -1
         self.phase = None
         self.files = None
+        self.all_files = None
+        self.all_labels = None
         self.labels = None
         self.set_phase(0, 'train')
 
@@ -69,7 +71,12 @@ class SpecDCASE20191b(Dataset):
         return sample
 
     def get_parallel_set(self):
-        return ParallelDataSet(self.files, self.labels, self, self.phase)
+        return ParallelDataSet(
+            self.all_files if self.phase is 'train' else self.files,
+            self.all_labels if self.phase is 'train' else self.labels,
+            self,
+            self.phase
+        )
 
     def load_label_dict(self):
         meta = np.loadtxt(self.folder_raw_audio / 'meta.csv', skiprows=1, dtype=np.object)[:, [0, 1, 3]]
@@ -120,7 +127,9 @@ class SpecDCASE20191b(Dataset):
         if phase is 'train':
             self.augment = True
             assert fold in range(len(self.folds))
-            self.files = self.folds[fold][0]
+            self.all_files = self.folds[fold][0]
+            self.all_labels = np.array([self.label_dict[f] for f in self.all_files])
+            self.files = [f for f in self.all_files if f.split('-')[-1] == 'a']
         elif phase is 'val':
             self.augment = False
             assert fold in range(len(self.folds))
