@@ -9,7 +9,7 @@ from sklearn.preprocessing import LabelEncoder
 import torchvision
 
 
-def split(files, labels, remove_end=False):
+def split(files, labels, remove_end=True):
     label_dict = {}
 
     for i, file in enumerate(files):
@@ -174,7 +174,7 @@ class SpecDCASE20191b(Dataset):
             assert fold in range(len(self.folds))
             self.files = self.folds[fold][0]
             self.labels = np.array([self.label_dict[f] for f in self.files])
-            self.single_files, self.single_labels, self.parallel_files, self.parallel_labels = split(self.files, self.labels)
+            self.single_files, self.single_labels, self.parallel_files, self.parallel_labels = split(self.files, self.labels, remove_end=False)
             self.files = self.single_files
             self.labels = self.single_labels
 
@@ -183,7 +183,7 @@ class SpecDCASE20191b(Dataset):
             assert fold in range(len(self.folds))
             self.files = self.folds[fold][1]
             self.labels = np.array([self.label_dict[f] for f in self.files])
-            self.single_files, self.single_labels, self.parallel_files, self.parallel_labels = split(self.files, self.labels)
+            self.single_files, self.single_labels, self.parallel_files, self.parallel_labels = split(self.files, self.labels, remove_end=False)
 
         elif phase is 'test':
             self.augment = False
