@@ -9,6 +9,33 @@ from sklearn.preprocessing import LabelEncoder
 import torchvision
 
 
+def split(files, labels):
+    label_dict = {}
+
+    for i, file in enumerate(files):
+        name = '-'.join(file.split('-')[:-1])
+        if label_dict.get(name, None):
+            label_dict[name] = (labels[i], label_dict[name][1] + 1)
+        else:
+            label_dict[name] = (labels[i], 1)
+
+    single_label_dict = {}
+    parallel_label_dict = {}
+    for k in label_dict:
+        if label_dict[k][1] >= 2:
+            parallel_label_dict[k] = label_dict[k][0]
+        if label_dict[k][1] >= 2:
+            single_label_dict[k] = label_dict[k][0]
+
+    single_files = list(single_label_dict.keys())
+    single_labels = [single_label_dict[f] for f in single_files]
+
+    parallel_files = list(parallel_label_dict.keys())
+    parallel_labels = [parallel_label_dict[f] for f in parallel_files]
+
+    return single_files, single_labels, parallel_files, parallel_labels
+
+
 class SpecDCASE20191b(Dataset):
 
     def __init__(self, **params):
@@ -36,9 +63,11 @@ class SpecDCASE20191b(Dataset):
         self.fold = -1
         self.phase = None
         self.files = None
-        self.all_files = None
-        self.all_labels = None
         self.labels = None
+        self.single_files = None
+        self.single_labels = None
+        self.parallel_files = None
+        self.parallel_labels = None
         self.set_phase(0, 'train')
 
         if not self.is_cached():
@@ -72,8 +101,8 @@ class SpecDCASE20191b(Dataset):
 
     def get_parallel_set(self):
         return ParallelDataSet(
-            self.all_files if self.phase is 'train' else self.files,
-            self.all_labels if self.phase is 'train' else self.labels,
+            self.single_files + self.parallel_files,
+            self.single_labels + self.parallel_labels,
             self,
             self.phase
         )
@@ -127,23 +156,31 @@ class SpecDCASE20191b(Dataset):
         if phase is 'train':
             self.augment = True
             assert fold in range(len(self.folds))
-            self.all_files = self.folds[fold][0]
-            self.all_labels = np.array([self.label_dict[f] for f in self.all_files])
-            self.files = [f for f in self.all_files if f.split('-')[-1] == 'a']
+            self.files = self.folds[fold][0]
+            self.labels = np.array([self.label_dict[f] for f in self.files])
+            self.single_files, self.single_labels, self.parallel_files, self.parallel_labels = split(self.files, self.labels)
+            self.files = self.single_files
+            self.labels = self.single_labels
+
         elif phase is 'val':
             self.augment = False
             assert fold in range(len(self.folds))
             self.files = self.folds[fold][1]
+            self.labels = np.array([self.label_dict[f] for f in self.files])
+            self.single_files, self.single_labels, self.parallel_files, self.parallel_labels = split(self.files, self.labels)
+
         elif phase is 'test':
             self.augment = False
             self.files = self.leader_board
+            self.labels = np.array([self.label_dict[f] for f in self.files])
         elif phase is 'submission':
             self.augment = False
             self.files = self.submission
+            self.labels = np.array([self.label_dict[f] for f in self.files])
         else:
             raise AttributeError
 
-        self.labels = np.array([self.label_dict[f] for f in self.files])
+
 
     def is_cached(self):
         return (self.folder_cache.exists() and
@@ -206,22 +243,9 @@ class ParallelDataSet(Dataset):
 
     def __init__(self, files, labels, data_set, phase, alpha=0.2, cache=True):
         self.data_set = data_set
-        label_dict = {}
 
-        for i, file in enumerate(files):
-            name = '-'.join(file.split('-')[:-1])
-            if label_dict.get(name, None):
-                label_dict[name] = (labels[i], label_dict[name][1] + 1)
-            else:
-                label_dict[name] = (labels[i], 1)
+        _, _, self.files, self.labels = split(files, labels)
 
-        reduced_label_dict = {}
-        for k in label_dict:
-            if label_dict[k][1] >= 2:
-                reduced_label_dict[k] = label_dict[k][0]
-
-        self.files = list(reduced_label_dict.keys())
-        self.labels = [reduced_label_dict[f] for f in self.files]
         self.folder_cache = data_set.folder_cache
         self.phase = phase
         self.alpha = alpha
