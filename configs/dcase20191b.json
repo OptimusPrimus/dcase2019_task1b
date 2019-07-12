@@ -4,8 +4,8 @@
   "data_set": {
     "class": "data_sets.SpecDCASE20191b",
     "params": {
-      "folder_raw_audio": "./data/raw",
-      "folder_transformed_audio": "./data/cache",
+      "folder_raw_audio": "~/shared/slap_data/raw",
+      "folder_transformed_audio": "~/shared/slap_data/cache",
       "mono": true,
       "sampling_rate": 22050,
       "cache_transformations": [

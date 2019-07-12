@@ -90,21 +90,21 @@ class SpecDCASE20191b(Dataset):
         return label_dict, class_encoder, device_encoder
 
     def load_folds(self):
-        folds = []
-        for fold in range(4):
-            folds.append(
-                set([s.split('.')[0] for s in np.loadtxt(
-                    self.folder_raw_audio / 'training_setup' / 'fold{}.csv'.format(fold + 1),
+
+        train = list(set([s.split('.')[0] for s in np.loadtxt(
+                    self.folder_raw_audio / 'training_setup' / 'fold1_train.csv',
                     skiprows=1,
                     dtype=np.object)[:, 0]
-                     ])
-            )
+                     ]))
+
+        val = list(set([s.split('.')[0] for s in np.loadtxt(
+                    self.folder_raw_audio / 'training_setup' / 'fold1_evaluate.csv',
+                    skiprows=1,
+                    dtype=np.object)[:, 0]
+                     ]))
 
         return ([
-                    [list(folds[0]), list(folds[1].difference(folds[0]))],
-                    [list(folds[1]), list(folds[2].difference(folds[1]))],
-                    [list(folds[2]), list(folds[3].difference(folds[2]))],
-                    [list(folds[3]), list(folds[0].difference(folds[3]))]
+                    [train, val],
                 ], \
                 sorted('test/' + path.name.split('.')[0] for path in (self.folder_raw_audio / 'test').iterdir()),
                 sorted('submission/' + path.name.split('.')[0] for path in (self.folder_raw_audio / 'submission').iterdir())
