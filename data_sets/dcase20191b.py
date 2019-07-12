@@ -24,7 +24,7 @@ def split(files, labels, remove_end=True):
     for k in label_dict:
         if label_dict[k][1] >= 2:
             parallel_label_dict[k] = label_dict[k][0]
-        if label_dict[k][1] >= 2:
+        else:
             single_label_dict[k] = label_dict[k][0]
 
     single_files = list(single_label_dict.keys())
