@@ -1,4 +1,4 @@
-# DCASE2019 Task 1b
+# DCASE2019 Task 1b - Workshop
 DCASE2019 Task 1b - Acoustic Scene Classification with mismatched recording devices 
 
 
