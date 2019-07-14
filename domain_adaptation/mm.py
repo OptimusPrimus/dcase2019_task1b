@@ -108,9 +108,9 @@ class MMD(torch.nn.Module):
         return mmd2_D
 
     def forward_da(self, a, b, c):
-        a = self.hidden_features(a).view(a.size[0], -1)
-        b = self.hidden_features(b).view(b.size[0], -1)
-        c = self.hidden_features(c).view(c.size[0], -1)
+        a = self.hidden_features(a).view(a.shape[0], -1)
+        b = self.hidden_features(b).view(b.shape[0], -1)
+        c = self.hidden_features(c).view(c.shape[0], -1)
 
         return (
                        self.mmd(a, b) +
