@@ -101,7 +101,7 @@ class MMD(torch.nn.Module):
         return mmd2
 
     def mmd(self, x, y):
-        sigma_list = [sigma / self.base for sigma in self.sigma_list]
+        sigma_list = [sigma / self.base for sigma in self.scales]
 
         K_XX, K_XY, K_YY, _ = self._mix_rbf_kernel(x, y, sigma_list)
         mmd2_D = self._mmd2(K_XX, K_XY, K_YY, const_diagonal=False, biased=self.biased)
