@@ -105,7 +105,7 @@ class MMD(torch.nn.Module):
 
         K_XX, K_XY, K_YY, _ = self._mix_rbf_kernel(x, y, sigma_list)
         mmd2_D = self._mmd2(K_XX, K_XY, K_YY, const_diagonal=False, biased=self.biased)
-        return mmd2_D
+        return torch.sqrt(F.relu(mmd2_D))
 
     def forward_da(self, a, b, c):
         a = self.hidden_features(a).view(a.shape[0], -1)
