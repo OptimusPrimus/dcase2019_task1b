@@ -290,14 +290,17 @@ class ParallelDataSet(Dataset):
 
     def __getitem__(self, idx):
 
+        idx_b = np.random.randint(0, len(self))
+        idx_c = np.random.randint(0, len(self))
+
         if self.cache:
             a = self.files_[idx][0]
-            b = self.files_[idx][1]
-            c = self.files_[idx][2]
+            b = self.files_[idx_b][1]
+            c = self.files_[idx_c][2]
         else:
             a = np.load(self.folder_cache / (self.files[idx] + '-a.npy'))
-            b = np.load(self.folder_cache / (self.files[idx] + '-b.npy'))
-            c = np.load(self.folder_cache / (self.files[idx] + '-c.npy'))
+            b = np.load(self.folder_cache / (self.files[idx_b] + '-b.npy'))
+            c = np.load(self.folder_cache / (self.files[idx_c] + '-c.npy'))
 
         if self.phase == 'train':
             # rotate original
@@ -308,14 +311,17 @@ class ParallelDataSet(Dataset):
 
             # load another exaple
             idx = np.random.randint(0, len(self))
+            idx_b = np.random.randint(0, len(self))
+            idx_c = np.random.randint(0, len(self))
+
             if self.cache:
                 a_ = self.files_[idx][0]
-                b_ = self.files_[idx][1]
-                c_ = self.files_[idx][2]
+                b_ = self.files_[idx_b][1]
+                c_ = self.files_[idx_c][2]
             else:
                 a_ = np.load(self.folder_cache / (self.files[idx] + '-a.npy'))
-                b_ = np.load(self.folder_cache / (self.files[idx] + '-b.npy'))
-                c_ = np.load(self.folder_cache / (self.files[idx] + '-c.npy'))
+                b_ = np.load(self.folder_cache / (self.files[idx_b] + '-b.npy'))
+                c_ = np.load(self.folder_cache / (self.files[idx_c] + '-c.npy'))
             # rotate other
             i = np.random.randint(0, self.data_set.input_shape[-1])
             a_ = self.rotate_sample(a_, i)[:, :, :self.data_set.input_shape[-1]]
