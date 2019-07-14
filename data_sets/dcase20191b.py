@@ -302,7 +302,7 @@ class ParallelDataSet(Dataset):
             b = np.load(self.folder_cache / (self.files[idx_b] + '-b.npy'))
             c = np.load(self.folder_cache / (self.files[idx_c] + '-c.npy'))
 
-        if self.phase == 'train':
+        if self.phase == 'train' and False:
             # rotate original
             i = np.random.randint(0, self.data_set.input_shape[-1])
             a = self.rotate_sample(a, i)[:, :, :self.data_set.input_shape[-1]]
