@@ -137,7 +137,7 @@ If you use other parts of the implementation please cite:
 ```
 @techreport{Primus2019DCASE,
     Author      =   {Primus, Paul and Eitelsebner, David},
-    institution =   {{DCASE2018 Challenge}},
+    institution =   {{DCASE2019 Challenge}},
     title       =   {Acoustic Scene Classification with mismatched recording devices},
     month       =   {June},
     year        =   2019
